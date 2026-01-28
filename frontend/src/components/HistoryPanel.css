@@ -1,0 +1,148 @@
+.history-panel {
+    background: white;
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    overflow: hidden;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4);
+    background: var(--gray-50);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.history-header:hover {
+    background: var(--gray-100);
+}
+
+.history-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.history-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.clear-all-btn {
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.clear-all-btn:hover {
+    background: var(--danger-100);
+    color: var(--danger-600);
+}
+
+.history-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-50);
+    transition: background var(--transition-fast);
+}
+
+.history-item:hover {
+    background: var(--gray-50);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item-content {
+    flex: 1;
+}
+
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-1);
+}
+
+.history-disease {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--gray-800);
+    text-transform: capitalize;
+}
+
+.history-date {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+}
+
+.history-item-result {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.history-risk {
+    font-size: 0.75rem;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+.history-risk.low-risk {
+    background: var(--success-100);
+    color: var(--success-700);
+}
+
+.history-risk.medium-risk {
+    background: var(--warning-100);
+    color: var(--warning-700);
+}
+
+.history-risk.high-risk {
+    background: var(--danger-100);
+    color: var(--danger-700);
+}
+
+.history-probability {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.history-delete-btn {
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    opacity: 0;
+}
+
+.history-item:hover .history-delete-btn {
+    opacity: 1;
+}
+
+.history-delete-btn:hover {
+    background: var(--danger-100);
+    color: var(--danger-600);
+}

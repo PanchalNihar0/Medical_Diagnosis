@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# ML artifacts (large files)
+ml_pipeline/outputs/*/model.pkl
+ml_pipeline/outputs/*/shap_explainer.pkl
+ml_pipeline/data/raw/*.csv
+
+# Node
+node_modules/
+.npm/
+*.log
+
+# Build outputs
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.env
+
+# Jupyter
+.ipynb_checkpoints/

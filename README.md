@@ -1,192 +1,175 @@
-# Medical_Diagnosis |  A Machine Learning Based Web Application
+# MediScreen - AI Health Risk Assessment
 
-![590-5901121_lovely-professional-university-logo-hd-png-download](https://user-images.githubusercontent.com/62024355/120755302-6ee99700-c52b-11eb-95b8-075edac041ed.png)
+<div align="center">
+  <img src="docs/logo.png" alt="MediScreen Logo" width="120" />
+  <h3>AI-Powered Medical Risk Screening System</h3>
+  <p>Transparent, explainable health risk assessments for educational and screening purposes</p>
+</div>
 
+---
 
-__Capstone-2: LPU | CAP347 CARGC0019__
+## 🎯 Overview
 
+MediScreen is a modern web application that uses machine learning to provide health risk assessments for 7 common conditions:
 
-![Pyhon 3.4](https://img.shields.io/badge/ide-Jupyter_notebook-blue.svg) ![Python](https://img.shields.io/badge/Language-Python-brightgreen.svg)  ![Frontend](https://img.shields.io/badge/Frontend-Bootstrap-purple.svg)  ![Frontend](https://img.shields.io/badge/Libraries-Streamlit-purple.svg)    ![Bootstrap](https://img.shields.io/badge/BaseEnvironment-AnacondaPrompt-brown.svg)   ![Bootstrap](https://img.shields.io/badge/Deployment-Github-yellow.svg)   ![Bootstrap](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)  
+| Condition | Input Type | Model |
+|-----------|------------|-------|
+| Diabetes | Clinical values | RandomForest/GradientBoosting |
+| Heart Disease | Clinical values | RandomForest |
+| Kidney Disease | Lab values | RandomForest |
+| Liver Disease | Lab values | RandomForest |
+| Breast Cancer | Biopsy data | RandomForest |
+| Malaria | Cell images | PyTorch CNN |
+| Pneumonia | X-ray images | PyTorch CNN |
 
-## Table of Content
-  * [Problem statment / Why this topic?](#Problem-statment)
-  * [Flow Chart / Archeticture](#Flow-chart)
-  * [Directory Tree](#directory-tree)
-  * [Quick start](#Quick-start)
-  * [Screenshots](#screenshots)
-  * [Technical Aspect](#technical-aspect)
-  * [Team](#team)
-  * [License](#license)
-  
+### Key Features
 
-  • This repository consists of files required to deploy an ___WEB PAGE___ created with ___HTML, CSS, BOOTSTRAP, ML, DL___ on ___github.io___ platform.
-  
-  
-![Deep-Learning-vs-Machine-Learning](https://user-images.githubusercontent.com/62024355/120758532-95a9cc80-c52f-11eb-9e5f-2255cd9b8a6c.jpg)
+- **Explainable AI**: SHAP-based explanations show which factors influenced the prediction
+- **Confidence Scoring**: Honest probability estimates with calibrated models
+- **What-If Analysis**: See how changing factors affects your risk
+- **PDF Reports**: Download formatted summaries to share with healthcare providers
+- **Responsible Messaging**: Clear disclaimers and appropriate recommendations
 
-  
-## Problem Statment
-The proposed project would be very useful in the medical field. In the proposed project a machine learning- based web application would be created for medical diagnosis. For a medical diagnosis, a machine learning model would be developed and integrated with the created web application. The user would be able to upload his medical data on the web application. The web application would pass this data to a developed machine learning model for health disease detection. After detection of health disease, if the person wants to take advice from a doctor then he can fix the appointment on the web application. A chat(Email) option would be provided on the web application to provide the communication between the patient and the doctor.
+---
 
-## Why this Project?
-Although, we know that humans can do the mistakes but machines doesnt. Plus we can check the predicted outcome accuracy with machine learning. So we go for Machine learning, Keeping this in mind we researched alot in the allopathic, homeopathy and ayurvedic data. Due to less research paper for the data set of patients in homeopathy and ayurvedic we go for allopathic data set that are avalible in Kaggle and UCI machine learning portals.
-  
-  
-## Flow chart
-Front-end UX/UI, Back-end Machine learning, Deep learning flow chart
-  
+## ⚠️ Important Disclaimer
 
-![ml](https://user-images.githubusercontent.com/62024355/120781058-4fac3300-c546-11eb-83be-dfc8319fd2f3.png)
-  
-  
-  
-  
-## Directory Tree 
-```
-├── Pyhon notebooks code files
-├── trained models.pkl file
-├── static logos
-├── Templates
-│   ├── Home.html
-│   ├── contact.html
-│   ├── about us.html
-│   ├── services.html
-│   ├── css folder
-│   ├── js folder
-│   ├── images folder
-│   └── fonts folder
-│         ├── Diabetes
-│         ├── Breast Cancer
-│         ├── Heart Disease
-│         ├── Kidney Disease
-│         ├── Liver Disease
-│         ├── Malaria
-│         └── Pneumonia
-├── app.py
-├── readme.md
-├── runtime.txt
-└── requirements.txt
+> **This is a screening tool, NOT a diagnostic system.**
+> 
+> Results are educational and should not replace professional medical evaluation. 
+> A "low risk" result does NOT mean you are healthy. A "high risk" result does NOT 
+> mean you have a disease. Always consult qualified healthcare professionals.
 
+---
 
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.10+
+- Node.js 18+
+- npm 9+
+
+### 1. Clone and Setup
+
+```bash
+git clone <repository-url>
+cd Medical_Diagnosis
 ```
 
-  
-  
-  
-## Quick start
-  
-**Step-1:** Download the files in the repository.<br>
-**Step-2:** Get into the downloaded folder, open command prompt in that directory and install all the dependencies using following command<br>
-```python
+### 2. Backend Setup
+
+```bash
+# Create virtual environment
+cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
-**Step-3:** After successfull installation of all the dependencies, run the following command<br>
-```python
-python app.py
-```
 
-```python
-or
-flask run
-```
-**Step-4:** Go to the __New command prompt__ of root folder, run the following commands in new cmd terminal<br> 
-```
-cd templates
-index.html
+# Start the API server
+uvicorn app.main:app --reload
 ```
 
+The API will be available at `http://localhost:8000`  
+API docs at `http://localhost:8000/docs`
 
+### 3. Train Models (First Time)
 
-  
-## Screenshots
+```bash
+cd ml_pipeline/training
+python train_all.py
+```
 
+This will train models and save them to `ml_pipeline/outputs/`.
 
-![g1](https://user-images.githubusercontent.com/62024355/120784738-09f16980-c54a-11eb-8742-daca4ada33b0.jpg)
-![g2](https://user-images.githubusercontent.com/62024355/120784742-0a8a0000-c54a-11eb-81a3-daee8b1eafd8.jpg)
-![g3](https://user-images.githubusercontent.com/62024355/120784744-0b229680-c54a-11eb-9596-d324a25a192a.jpg)
-![g4](https://user-images.githubusercontent.com/62024355/120784746-0bbb2d00-c54a-11eb-9365-df3172efcde1.jpg)
-![g5](https://user-images.githubusercontent.com/62024355/120784749-0bbb2d00-c54a-11eb-9d8a-3f4b53b9f208.jpg)
-![g6](https://user-images.githubusercontent.com/62024355/120784751-0c53c380-c54a-11eb-8401-6353e69ff728.jpg)
-![g7](https://user-images.githubusercontent.com/62024355/120784730-078f0f80-c54a-11eb-8c37-dffa48791db5.jpg)
-![Untitled](https://user-images.githubusercontent.com/62024355/120785788-1a561400-c54b-11eb-85d7-dcc64bb959f8.png)
-![Untitled1](https://user-images.githubusercontent.com/62024355/120785797-1cb86e00-c54b-11eb-8323-47ab1312e6d6.png)
-![2](https://user-images.githubusercontent.com/62024355/120785800-1d510480-c54b-11eb-8bc6-65447a5bd264.png)
-![3](https://user-images.githubusercontent.com/62024355/120785802-1de99b00-c54b-11eb-9c62-68e470eecd31.png)
-![7](https://user-images.githubusercontent.com/62024355/120785806-1de99b00-c54b-11eb-88ed-238fa0e9b0c1.png)
-  
-  
+### 4. Frontend Setup
 
-## Technical aspect
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-This webapp was developed using Flask Web Framework. The models used to predict the diseases were trained on large Datasets. All the links for datasets and the python notebooks used for model creation are mentioned below in this readme. The webapp can predict following Diseases:
-* Diabetes
-* Breast Cancer
-* Heart Disease
-* Kidney Disease
-* Liver Disease
-* Malaria
-* Pneumonia
+The frontend will be available at `http://localhost:5173`
 
-__Models with their Accuracy of Prediction__
+---
 
-Disease | Type of Model | Accuracy
---- | --- | ---
-Diabetes | Machine Learning Model | 98.25%
-Breast Cancer | Machine Learning Model | 98.25%
-Heart Disease | Machine Learning Model | 85.25%
-Kidney Disease | Machine Learning Model | 99%
-Liver Disease | Machine Learning Model | 78%
-Malaria | Deep Learning Model(CNN) | 96%
-Pneumonia | Deep Learning Model(CNN) | 95%
+## 📁 Project Structure
 
-__NOTE__
-<br>
-==> Python version 3.6.8 was used for the whole project.<br>
+```
+Medical_Diagnosis/
+├── backend/                 # FastAPI backend
+│   ├── app/
+│   │   ├── api/routes/      # API endpoints
+│   │   ├── api/schemas/     # Pydantic models
+│   │   ├── ml/              # Model loading & inference
+│   │   └── services/        # PDF reports, etc.
+│   └── tests/
+├── ml_pipeline/             # ML training pipeline
+│   ├── training/            # Training scripts
+│   ├── data/raw/            # Datasets
+│   └── outputs/             # Trained models
+├── frontend/                # React + Vite frontend
+│   └── src/
+│       ├── components/      # UI components
+│       ├── pages/           # Page components
+│       └── api/             # API client
+└── docs/                    # Documentation
+```
 
-__Dataset Links__
-All the datasets were used from kaggle.
-* [Diabetes Dataset](https://www.kaggle.com/uciml/pima-indians-diabetes-database)
-* [Breast Cancer Dataset](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
-* [Heart Disease Dataset](https://www.kaggle.com/ronitf/heart-disease-uci)
-* [Kidney Disease Dataset](https://www.kaggle.com/mansoordaku/ckdisease)
-* [Liver Disease Dataset](https://www.kaggle.com/uciml/indian-liver-patient-records)
-* [Malaria Dataset](https://www.kaggle.com/iarunava/cell-images-for-detecting-malaria)
-* [Pneumonia Dataset](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia)
+---
 
-__Links for Python Notebooks used for model creation__
-* [Diabetes Notebook](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Diabetes_Prediction.ipynb)
-* [Breast Cancer Notebook](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Cancer_Prediction.ipynb)
-* [Heart Disease Notebook](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Heart_Disease_Prediction.ipynb)
-* [Kidney Disease Notebook](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Kidney_Disease_Prediction.ipynb)
-* [Liver Disease Notebook](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Liver_Disease_Prediction.ipynb)
+## 🔧 Technology Stack
 
+### Backend
+- **FastAPI** - Modern async Python web framework
+- **Pydantic** - Data validation and serialization
+- **scikit-learn** - Tabular ML models
+- **PyTorch** - Image classification models
+- **SHAP** - Model explainability
+- **ReportLab** - PDF generation
 
+### Frontend
+- **React 18** - UI framework
+- **Vite** - Build tool
+- **React Router** - Client-side routing
+- **Lucide React** - Icons
+- **Recharts** - Charts
 
+---
 
-## Team
-![1622949162341](https://user-images.githubusercontent.com/62024355/120911263-703dcf80-c6a3-11eb-874f-93b538270b4e.jpg)
+## 📊 Model Methodology
 
+Our training pipeline ensures responsible ML:
 
+1. **Proper Evaluation**: Stratified train/test splits, cross-validation
+2. **Honest Metrics**: We report realistic accuracy, not inflated claims
+3. **Calibration**: Probability calibration for reliable confidence estimates
+4. **Recall Priority**: Medical screening prioritizes minimizing false negatives
+5. **Explainability**: SHAP values for every prediction
 
-[Karan Mehra (Data modeling, model integration, Front-end)](https://karanmehra7107.github.io/My-Portfolio/index.html) <br> [Surbhi (Exploratory Data cleaning, Data gathering)](https://github.com/Surbhisingh014) 
-<br>[Navdeep Nijjar (Quality assurance, content writter)](https://karanmehra7107.github.io/My-Portfolio/index.html)
+---
 
+## 🤝 Contributing
 
-__Special thanks to:__ Dr. Amar Singh (Assoicate professr) AI in data science & Machine learning.
+Contributions are welcome! Please:
 
-## License
-[![Apache license](https://img.shields.io/badge/license-apache-blue?style=for-the-badge&logo=appveyor)](http://www.apache.org/licenses/LICENSE-2.0e)
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-Copyright 2021 Karan Mehra | Surbhi | Navdeep
+---
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## 📄 License
 
-    http://www.apache.org/licenses/LICENSE-2.0
+MIT License - see [LICENSE](LICENSE) for details.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+---
+
+## 🙏 Acknowledgments
+
+- Datasets from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+- SHAP library by [Scott Lundberg](https://github.com/slundberg/shap)

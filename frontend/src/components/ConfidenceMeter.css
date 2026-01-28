@@ -1,0 +1,14 @@
+.badge-low {
+    background: var(--gray-100);
+    color: var(--gray-600);
+}
+
+.badge-medium {
+    background: var(--warning-100);
+    color: var(--warning-700);
+}
+
+.badge-high {
+    background: var(--primary-100);
+    color: var(--primary-700);
+}
