@@ -32,7 +32,7 @@ class ReportGenerator:
     def _setup_custom_styles(self):
         """Create custom paragraph styles."""
         self.styles.add(ParagraphStyle(
-            name='Title',
+            name='ReportTitle',
             parent=self.styles['Heading1'],
             fontSize=24,
             spaceAfter=20,
@@ -41,7 +41,7 @@ class ReportGenerator:
         ))
         
         self.styles.add(ParagraphStyle(
-            name='Subtitle',
+            name='ReportSubtitle',
             parent=self.styles['Normal'],
             fontSize=12,
             spaceAfter=10,
@@ -59,7 +59,7 @@ class ReportGenerator:
         ))
         
         self.styles.add(ParagraphStyle(
-            name='BodyText',
+            name='ReportBody',
             parent=self.styles['Normal'],
             fontSize=10,
             spaceAfter=8,
@@ -115,10 +115,10 @@ class ReportGenerator:
         story = []
         
         # Header
-        story.append(Paragraph("Health Risk Assessment Report", self.styles['Title']))
+        story.append(Paragraph("Health Risk Assessment Report", self.styles['ReportTitle']))
         story.append(Paragraph(
             f"Generated on {datetime.now().strftime('%B %d, %Y at %I:%M %p')}",
-            self.styles['Subtitle']
+            self.styles['ReportSubtitle']
         ))
         story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor('#1e40af')))
         story.append(Spacer(1, 20))
@@ -149,7 +149,7 @@ class ReportGenerator:
         
         # Recommendation
         story.append(Paragraph("Recommendation", self.styles['SectionHeader']))
-        story.append(Paragraph(prediction.recommendation, self.styles['BodyText']))
+        story.append(Paragraph(prediction.recommendation, self.styles['ReportBody']))
         story.append(Spacer(1, 10))
         
         # Input Summary
@@ -195,7 +195,7 @@ class ReportGenerator:
                 impact = "increases" if factor.contribution > 0 else "decreases"
                 story.append(Paragraph(
                     f"• <b>{factor.display_name}</b>: {factor.value:.2f} — {impact} risk",
-                    self.styles['BodyText']
+                    self.styles['ReportBody']
                 ))
             story.append(Spacer(1, 10))
         
@@ -204,7 +204,7 @@ class ReportGenerator:
             story.append(Paragraph("Lifestyle Recommendations", self.styles['SectionHeader']))
             
             for tip in prediction.lifestyle_tips:
-                story.append(Paragraph(f"• {tip}", self.styles['BodyText']))
+                story.append(Paragraph(f"• {tip}", self.styles['ReportBody']))
             story.append(Spacer(1, 10))
         
         # Disclaimer
