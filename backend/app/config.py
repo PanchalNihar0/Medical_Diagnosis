@@ -25,8 +25,8 @@ class Settings:
         cors_origins_env = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000")
         self.cors_origins: List[str] = [o.strip() for o in cors_origins_env.split(",")]
         
-        # Model settings
-        self.models_dir: Path = Path(__file__).parent.parent.parent / "ml_pipeline" / "outputs"
+        # Model settings - models are in ml_pipeline_outputs/ inside backend for Render
+        self.models_dir: Path = Path(__file__).parent.parent / "ml_pipeline_outputs"
         
         # Confidence thresholds
         self.confidence_low_threshold: float = 0.4
